@@ -46,7 +46,7 @@ body {
   border: 2px solid #9dffad;
   border-radius: 15px;
 }
-
+/* ---------- countdown option ------------ */
 #countdown {
   position: fixed;
   height: 100vh;

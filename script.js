@@ -48,7 +48,7 @@ const typeController = (e) => {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
 
-  // Check if given question text is equal to user typed text
+  // Check if given question text is equal to user typed text------------------
   if (questionText === userText) {
     gameOver();
   }
@@ -62,9 +62,10 @@ const validate = (key) => {
   return false;
 };
 
-// FINISHED TYPING
+// -------------FINISHED TYPING----------------
 const gameOver = () => {
   document.removeEventListener("keydown", typeController);
+
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
@@ -74,11 +75,14 @@ const gameOver = () => {
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
+
   // Clear user text------------
   display.innerHTML = "";
-  // Make it inactive-------------
+
+  // Make it Inactive-------------
   display.classList.add("inactive");
-  // Show result-----------
+
+  // Show Result-----------------
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
@@ -88,7 +92,7 @@ const gameOver = () => {
 
   addHistory(questionText, timeTaken, errorCount);
 
-  // restart Everything-------------
+  // Restart Everything-------------
   startTime = null;
   errorCount = 0;
   userText = "";
@@ -101,7 +105,7 @@ const closeModal = () => {
 };
 
 const start = () => {
-  // If already started, Do not start again--------
+  // If already started, Do not start again----------------
   if (startTime) return;
 
   let count = 3;
@@ -110,7 +114,7 @@ const start = () => {
   const startCountdown = setInterval(() => {
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
 
-    // finished timer
+    // Finished timer---------
     if (count == 0) {
       // ------------ START TYPING ---------------
       document.addEventListener("keydown", typeController);
@@ -124,7 +128,7 @@ const start = () => {
   }, 1000);
 };
 
-// START Countdown option
+// START Countdown Option---------
 startBtn.addEventListener("click", start);
 
 // If history exists, show it there
