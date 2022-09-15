@@ -5,13 +5,13 @@ const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
 
-// variables
+// Variables---------------
 let userText = "";
 let errorCount = 0;
 let startTime;
 let questionText = "";
 
-// Load and display question
+// Load and display question-------------
 fetch("./texts.json")
   .then((res) => res.json())
   .then((data) => {
@@ -19,7 +19,7 @@ fetch("./texts.json")
     question.innerHTML = questionText;
   });
 
-// checks the user typed character and displays accordingly
+// Checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
 
@@ -29,11 +29,11 @@ const typeController = (e) => {
     return display.removeChild(display.lastChild);
   }
 
-  // these are the valid character we are allowing to type
+  // These are the valid character we are allowing to type---------
   const validLetters =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890!@#$%^&*()_+-={}[]'\".,?";
 
-  // if it is not a valid character like Control/Alt then skip displaying anything
+  // If it is not a valid character like Control/Alt then skip displaying anything
   if (!validLetters.includes(newLetter)) {
     return;
   }
@@ -48,7 +48,7 @@ const typeController = (e) => {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
 
-  // check if given question text is equal to user typed text
+  // Check if given question text is equal to user typed text
   if (questionText === userText) {
     gameOver();
   }
