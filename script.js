@@ -70,6 +70,8 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = parseInt((finishTime - startTime) / 1000);
+  const wpm = (userText.length * timeTaken) / 60;
+
 
   // Show result modal--------------
   resultModal.innerHTML = "";
@@ -87,10 +89,11 @@ const gameOver = () => {
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount++}</span> mistakes</p>
+    <p>Typing speed : <span class="bold green">${wpm.toFixed(0)}</span></p>
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timeTaken, errorCount, wpm);
 
   // Restart Everything-------------
   startTime = null;
