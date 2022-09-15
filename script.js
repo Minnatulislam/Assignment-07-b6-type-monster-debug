@@ -70,15 +70,15 @@ const gameOver = () => {
   const finishTime = new Date().getTime();
   const timeTaken = parseInt((finishTime - startTime) / 1000);
 
-  // show result modal
+  // Show result modal--------------
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
-  // clear user text
+  // Clear user text------------
   display.innerHTML = "";
-  // make it inactive
+  // Make it inactive-------------
   display.classList.add("inactive");
-  // show result
+  // Show result-----------
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
@@ -88,7 +88,7 @@ const gameOver = () => {
 
   addHistory(questionText, timeTaken, errorCount);
 
-  // restart everything
+  // restart Everything-------------
   startTime = null;
   errorCount = 0;
   userText = "";
@@ -101,7 +101,7 @@ const closeModal = () => {
 };
 
 const start = () => {
-  // If already started, Do not start again
+  // If already started, Do not start again--------
   if (startTime) return;
 
   let count = 3;
